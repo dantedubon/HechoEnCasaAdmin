@@ -17,11 +17,12 @@ import 'typeface-open-sans';
 import './index.css';
 // Relative imports
 import withRoot from '../utils/withRoot';
+import logoImage from '../images/logo.png';
 import styled from '../utils/styled';
-import Header from '../components/Header';
+import Menu from '../components/Menu';
 import Footer from '../components/Footer';
 import { loginUser, logoutUser } from '../utils/identityActions';
-
+import Link from 'gatsby-link';
 // Create Apollo Client
 const httpLink = createHttpLink({
   uri: process.env.GATSBY_GRAPHQLCMS_ENDPOINT,
@@ -48,6 +49,24 @@ const client = new ApolloClient({
   cache,
 });
 
+const LayoutWrapper = styled(Grid, {
+  component: 'div',
+  container: true,
+  spacing: 24,
+  direction: 'row',
+  alignItems: 'flex-start',
+  justify: 'flex-start',
+})(theme => ({
+  background: theme.palette.background.default,
+}));
+
+const LayoutContent = styled(Grid)(theme => ({
+  textAlign: 'center',
+}));
+const Logo = styled('img')(theme => ({
+  marginTop: theme.spacing.unit * 4,
+  height: 196,
+}));
 const Main = styled('main')(theme => ({
   backgroundColor: 'white',
   borderBottom: `1px solid ${theme.palette.grey[200]}`,
@@ -76,8 +95,18 @@ class App extends Component {
               { name: 'description', content: site.siteMetadata.description },
             ]}
           />
-          <Header data={{ site }} />
-          <Main>{children()}</Main>
+          <Link to="/">
+            <Logo src={logoImage} alt={site.siteMetadata.title} />
+          </Link>
+          <LayoutWrapper>
+            <LayoutContent item xs={1}>
+              <Menu data={{ site }} />
+            </LayoutContent>
+            <LayoutContent item xs={11}>
+              <Main>{children()}</Main>
+            </LayoutContent>
+          </LayoutWrapper>
+
           <Footer data={{ site }} />
         </Wrapper>
       </ApolloProvider>
