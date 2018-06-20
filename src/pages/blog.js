@@ -44,7 +44,7 @@ const IndexPage = ({ data }) => {
     <Section>
       <Grid item xs={12} sm={8}>
         <Helmet title="Blog" />
-        <Typography variant="display1">Blog</Typography>
+        <Typography variant="display1">Noticias</Typography>
         <Typography>
           Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod ubi nisi,
           ex ab ipsum enim quis, quo quamquam a ullamco. Ab aliquip
@@ -71,11 +71,7 @@ const IndexPage = ({ data }) => {
                 <PostTitle to={`/post/${post.node.slug}`}>
                   <Typography variant="title">{post.node.title}</Typography>
                 </PostTitle>
-                <Typography>
-                  Officia e ipsum. Ut quis expetendis exquisitaque an eiusmod
-                  ubi nisi, ex ab ipsum enim quis, quo quamquam a ullamco. Ab
-                  aliquip comprehenderit, occaecat quae fugiat excepteur export.
-                </Typography>
+                <Typography>{post.node.content}</Typography>
               </div>
             </ListItem>
           ))}

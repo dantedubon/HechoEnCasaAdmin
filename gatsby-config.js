@@ -4,10 +4,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Starter Procyon',
-    shortName: 'Procyon',
-    description:
-      'An opinionated Gatsby starter designed for trash-eating pandas.',
+    title: 'Administracion Hecho en Casa',
+    shortName: 'Hecho en Casa',
+    description: 'Hecho en Casa.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
